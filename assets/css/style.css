@@ -1,0 +1,59 @@
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar personalizada */
+.navbar-brand {
+  font-weight: 600;
+}
+
+/* Carrusel */
+.carousel-item {
+  max-height: 500px;
+}
+
+.carousel-item img {
+  object-fit: cover;
+}
+
+/* Cards */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Formularios */
+.card-header {
+  font-weight: 500;
+}
+
+/* Footer */
+footer {
+  background-color: #212529;
+  color: white;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel-caption {
+    font-size: 0.8rem;
+  }
+  
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+  
+  .search-form {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
