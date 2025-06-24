@@ -5,14 +5,15 @@
         <h3 class="mb-0">Iniciar Sesión</h3>
       </div>
       <div class="card-body">
-        <form>
+        <form action="<?= base_url('login/auth') ?>" method="post">
+          <?= csrf_field() ?>
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="loginEmail" required>
+            <input type="email" class="form-control" id="loginEmail" name="loginEmail" required>
           </div>
           <div class="mb-3">
             <label for="loginPassword" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="loginPassword" required>
+            <input type="password" class="form-control" id="loginPassword" name="loginPassword"required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="rememberMe">

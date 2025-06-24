@@ -26,17 +26,7 @@ class Pages extends BaseController
     }
 
 
-    public function register()
-    {
-        return view('templates/header')
-            . view('pages/register')
-            . view('templates/footer');
-    }
+    
 
-    public function login()
-    {
-        return view('templates/header')
-            . view('pages/login')
-            . view('templates/footer');
-    }
+    
 }
