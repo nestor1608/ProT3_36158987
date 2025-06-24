@@ -1,8 +1,11 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 use App\Models\UsuarioModel;
 
-class LoginController extends BaseController {
+class LoginController extends BaseController
+{
     public function index()
     {
         return view('templates/header')
@@ -10,7 +13,8 @@ class LoginController extends BaseController {
             . view('templates/footer');
     }
 
-    public function auth() {
+    public function auth()
+    {
         $model = new UsuarioModel();
         $email = $this->request->getPost('loginEmail');
         $password = $this->request->getPost('loginPassword');
@@ -20,14 +24,23 @@ class LoginController extends BaseController {
             return redirect()->back()->withInput()->with('error', 'Credenciales inválidas');
         }
 
-        // Aquí puedes configurar la sesión del usuario
         $session = session();
-        $session->set('user_id', $user['id']);
+        $session->set([
+            'user_id' => $user['id'],
+            'is_admin' => $user['is_admin'] ?? false
+        ]);
+        log_message('debug', 'Login exitoso: '.print_r($session->get(), true));
 
-        return redirect()->to('/')->with('message', 'Bienvenido '.$user['nombre']);
+        // Redirigir según el tipo de usuario
+        if ($user['is_admin'] ?? false) {
+            return redirect()->to('/admin/dashboard')->with('message', 'Bienvenido administrador ' . $user['nombre']);
+        }
+
+        return redirect()->to('/')->with('message', 'Bienvenido ' . $user['nombre']);
     }
 
-    public function logout() {
+    public function logout()
+    {
         session()->destroy();
         return redirect()->to('/');
     }
